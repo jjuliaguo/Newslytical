@@ -1,0 +1,30 @@
+import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
+import  * as ImagePicker from "expo-image-picker";
+import * as Permission from "expo-permissions";
+import { StyleSheet, Header, Text, View, SafeAreaView} from 'react-native';
+
+
+export default function App() {
+
+  return (
+    <SafeAreaView style={styles.container}>
+          <Text numberOfLines={1} onPress={() => console.log("Hello")}>Global News</Text>
+          <Text numberOfLines={1}>Canada & Us News</Text>
+          <Text>Vancouverites</Text>
+          <Text>Food & Drink</Text>
+          <Text>Car</Text>
+          <Text>Entertaimethuhuhuhu</Text>
+          
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

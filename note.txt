@@ -1,0 +1,6 @@
+Visual Studio Code extension:
+    ES7+ React/Redux/React-Native snippets
+    React Native Tool
+    Prettier-code formatter
+    Materal Icon Theme
+1. expo start

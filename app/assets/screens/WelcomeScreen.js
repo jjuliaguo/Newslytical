@@ -8,9 +8,12 @@ export default function WelcomeScreen(props) {
     <ImageBackground source={require("./workplace.jpg")} blurRadius={2} style={styles.background}>
       <View style={styles.iconContainer}>
         <Image source={require("../icon-removebg.png")} style={styles.icon}></Image>
-        <Text style={styles.tagLine}>Know What                                        </Text>
-        <Text style={styles.tagLine2}>                                             Happens Today</Text>
       </View>
+          <Text style={styles.tagLine1}>Know What</Text>
+          <Text style={styles.tagLine2}>Happens Today</Text>
+   
+       
+     
       <View style={styles.buttonContainer}>
         <AppButton title="login" bgColor="primary"  />
         <AppButton title="Register" bgColor="primaryD3" textColor="white" />
@@ -23,34 +26,39 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems:"center"
+    
   },
 
   iconContainer:{
-    
     position:"absolute",
-    top:20,
+    top:20, 
     //backgroundColor:"blue",
-    justifyContent: "center",
-    alignItems:"center",
-    
+    alignSelf:"center"
   },
   icon: {
     width:150,
     height:150,
-    alignItems:"center",
   },
-  tagLine:{
+
+  tagLine1:{ 
+    position:"absolute",
+    top:170, 
     fontSize:24,
     fontWeight: "600",
     paddingVertical:5,
-    color:colors.black
+    color:colors.black,
+    //backgroundColor:"red",
+    paddingLeft:40,
+    alignSelf:"flex-start"
   },
   tagLine2:{
+    position:"absolute",
+    top:200, 
     fontSize:22,
     fontWeight: "600",
-    paddingVertical:0,
-    color:colors.black
+    color:colors.black,
+    alignSelf:"flex-end",
+    paddingRight:15
   },
   buttonContainer: {
     /*flex:1,

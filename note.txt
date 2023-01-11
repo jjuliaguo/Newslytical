@@ -4,3 +4,9 @@ Visual Studio Code extension:
     Prettier-code formatter
     Materal Icon Theme
 1. expo start
+
+
+
+=========================================================
+Short Cut
+rnfs

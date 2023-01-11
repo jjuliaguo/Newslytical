@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View,Image } from 'react-native'
 import React from 'react'
 import AppText from '../components/AppText'
+import AppListItem from '../components/AppListItem'
 
 export default function NewsDetailScreen() {
   return (
     <View style={styles.card}>
         <Image style={styles.image} source = {require("../new1.png")}/>
+        <AppListItem title="Josephen Roger" subTitle="Jan 08, 2022"/>
         <AppText style = {styles.title}>Mount Pleasant says goodbye to 'Oh Carolina' as hospitality group sets sights on South Vancouver</AppText>
         <AppText style = {styles.description}>On Sunday, the owners of Oh Carolina gave one week’s notice that the business is closing its doors, which opened at the intersection of Carolina and 12th streets in 2021.
 “Our time together is drawing to a close,” reads the Instagram post. “Thank you for helping us to support local independent food producers, and celebrate incredible chefs and winemakers at our beautiful summer pop-up events.” One of four partners that make up Gooseneck Hospitality, the group that operates Oh Carolina, says the project is being passed along to friends who know the grocer-café model better.
@@ -27,12 +29,14 @@ const styles = StyleSheet.create({
     image:{
         width:"100%",
         height:300,
+        marginBottom:40,
     },
     title:{
       fontSize:20,
       fontWeight:"600",
       marginBottom:7,
-      color:"#091BCD"
+      color:"#091BCD",
+      marginTop:20,
     },
     description:{
       fontSize:18,

@@ -1,7 +1,8 @@
 import { Platform, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
-
+//import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
+//import Constants from "expo-constants"
+//console.log(Constants)
 export default function AppText({children, style}) {
   return (
     <View>
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     text:{
         fontSize:18,
         padding:10,
-        fontFamily: Platform.OS==="andriod"?"Roboto":"Avenir",
+        fontFamily: Platform.OS==="android"?"Roboto":"Avenir",
     }
 
 

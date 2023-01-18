@@ -10,3 +10,5 @@ Visual Studio Code extension:
 =========================================================
 Short Cut
 rnfs
+========================================================
+npm i expo-constants -> to remove Platform and Status Bar (List 3)

@@ -1,22 +1,33 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, TouchableHighlight } from 'react-native'
 import React from 'react'
 import AppText from './AppText'
 import colors from '../config/colors'
-export default function AppListItem({title,subTitle,image}) {
+import Swipeable from 'react-native-gesture-handler/Swipeable'
+//AppListItem is for author and icon, it has title and subtitle
+export default function AppListItem({title,subTitle,image, onPress, renderRightActions}) {
   return (
-    <View style={styles.container}>
-        <Image style={styles.image} source={require("../profile.jpeg")}/>
-        <View>
-            <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subTitle}>{subTitle}</AppText>
+    <Swipeable renderRightActions={()=><View style={{backgroundColor:"red", width:70}}></View>}>
+      <TouchableHighlight 
+        underlayColor={colors.light}
+        //onPress={()=>console.log("test")}
+        onPress={onPress}
+      >
+        <View style={styles.container}>
+            <Image style={styles.image} source={image}/>
+            <View>
+                <AppText style={styles.title}>{title}</AppText>
+                <AppText style={styles.subTitle}>{subTitle}</AppText>
+            </View>
         </View>
-    </View>
+      </TouchableHighlight>
+    </Swipeable>
   )
 }
 
 const styles = StyleSheet.create({
   container:{
-    flexDirection:"row"
+    flexDirection:"row",
+    padding:15
   },
   image:{
     width:70,

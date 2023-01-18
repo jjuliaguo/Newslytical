@@ -6,6 +6,7 @@ export default {
     secondary:"#E0AFEA",
     white:"#fff",
     black:"#000",
-    medium:"#6e6969"
+    medium:"#6e6969",
+    light:"#f8f4f4",
 
 };

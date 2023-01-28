@@ -4,6 +4,7 @@ import AppListItem from '../components/AppListItem'
 import AppSafeAreaView from '../components/AppSafeAreaView'
 import AppListItemSeparator from '../components/AppListItemSeparator'
 import colors from '../config/colors'
+import AppListItemDeletable from '../components/AppListItemDeletable'
 //import { StatusBar } from 'expo-status-bar'
 
 
@@ -11,7 +12,7 @@ const messages = [
     {
         id:1,
         title:"T1",
-        description:"D1",
+        description:"D123",
         image: require("../p1.jpg")
     },
     {
@@ -29,6 +30,9 @@ const messages = [
 
 ]
 
+function sayHi(){
+  console.log("hey");
+}
 
 export default function MessageScreen() {
   return (
@@ -36,16 +40,19 @@ export default function MessageScreen() {
       <FlatList 
         data={messages}
         keyExtractor={m=>m.id.toString()}
-        renderItem={({item}) => <AppListItem 
-                                  title={item.title} 
-                                  subTitle={item.description} 
-                                  image={item.image} 
-                                  onPress={()=>console.log("Message --", item)}/>
-                                  
-        }
+        renderItem={({item}) => (
+            <AppListItem 
+                  title={item.title} 
+                  subTitle={item.description} 
+                  image={item.image} 
+                  onPress={()=>console.log("Message --", item)}
+                  renderRightActions={()=>{<View style={{backgroundColor:"red",width:70}}></View> }}
+            />
+        )}
+                                
         ItemSeparatorComponent={()=><AppListItemSeparator style={{backgroundColor:colors.light}}/>}
         
-        ></FlatList>
+        />
     </AppSafeAreaView>
   )
 }

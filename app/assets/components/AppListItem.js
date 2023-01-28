@@ -4,12 +4,12 @@ import AppText from './AppText'
 import colors from '../config/colors'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 //AppListItem is for author and icon, it has title and subtitle
+import AppListItemDeletable from './AppListItemDeletable'
 export default function AppListItem({title,subTitle,image, onPress, renderRightActions}) {
   return (
-    <Swipeable renderRightActions={()=><View style={{backgroundColor:"red", width:70}}></View>}>
+    <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight 
         underlayColor={colors.light}
-        //onPress={()=>console.log("test")}
         onPress={onPress}
       >
         <View style={styles.container}>

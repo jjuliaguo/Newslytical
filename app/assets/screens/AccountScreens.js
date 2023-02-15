@@ -4,7 +4,7 @@ import React from 'react'
 export default function AccountScreens() {
   return (
     <View>
-      <Text>AccountScreens</Text>
+      <Text></Text>
     </View>
   )
 }

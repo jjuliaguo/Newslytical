@@ -12,3 +12,6 @@ Short Cut
 rnfs
 ========================================================
 npm i expo-constants -> to remove Platform and Status Bar (List 3)
+
+
+2/14 -> next class continume handle delete

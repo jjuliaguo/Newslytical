@@ -1,5 +1,5 @@
-import { StyleSheet, FlatList, View } from "react-native";
-import React from "react";
+import { StyleSheet, FlatList } from "react-native";
+import React, {useState} from "react";
 import AppListItem from "../components/AppListItem";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppListItemSeparator from "../components/AppListItemSeparator";
@@ -7,7 +7,7 @@ import colors from "../config/colors";
 import AppListItemDeletable from "../components/AppListItemDeletable";
 //import { StatusBar } from 'expo-status-bar'
 
-const messages = [
+const initialMessages = [
   {
     id: 1,
     title: "T1",
@@ -28,11 +28,17 @@ const messages = [
   },
 ];
 
-function sayHi() {
-  console.log("hey");
-}
 
-export default function MessageScreen() {
+
+export default function MessageScreen(props) {
+  const[messages, setMessages]= useState(initialMessages);
+  const handleDelete = (message) =>{
+    //Delete the message from message
+    const newMessages=messages.filter((m)=> m.id !== message.id)
+    setMessages(newMessages);
+    //console.log(newMessages[0]);
+  };
+
   return (
     <AppSafeAreaView>
       <FlatList
@@ -43,10 +49,9 @@ export default function MessageScreen() {
             title={item.title}
             subTitle={item.description}
             image={item.image}
-            onPress={() => console.log("Message --", item)}
+            onPress={() => console.log("Messge --", item)}
             renderRightActions={() => 
-              <View style={{ backgroundColor: "red", width: 70 }}></View>
-            }
+              <AppListItemDeletable onPress={()=>handleDelete(item)}/>}
           />
         )}
         ItemSeparatorComponent={() => (

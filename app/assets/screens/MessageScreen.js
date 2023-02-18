@@ -1,5 +1,5 @@
 import { StyleSheet, FlatList } from "react-native";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import AppListItem from "../components/AppListItem";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppListItemSeparator from "../components/AppListItemSeparator";
@@ -28,13 +28,12 @@ const initialMessages = [
   },
 ];
 
-
-
 export default function MessageScreen(props) {
-  const[messages, setMessages]= useState(initialMessages);
-  const handleDelete = (message) =>{
+  const [messages, setMessages] = useState(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
+  const handleDelete = (message) => {
     //Delete the message from message
-    const newMessages=messages.filter((m)=> m.id !== message.id)
+    const newMessages = messages.filter((m) => m.id !== message.id);
     setMessages(newMessages);
     //console.log(newMessages[0]);
   };
@@ -50,13 +49,25 @@ export default function MessageScreen(props) {
             subTitle={item.description}
             image={item.image}
             onPress={() => console.log("Messge --", item)}
-            renderRightActions={() => 
-              <AppListItemDeletable onPress={()=>handleDelete(item)}/>}
+            renderRightActions={() => (
+              <AppListItemDeletable onPress={() => handleDelete(item)} />
+            )}
           />
         )}
         ItemSeparatorComponent={() => (
           <AppListItemSeparator style={{ backgroundColor: colors.light }} />
         )}
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: 3,
+              title: "T3",
+              description: "D3",
+              image: require("../p1.jpg"),
+            },
+          ]);
+        }}
       />
     </AppSafeAreaView>
   );

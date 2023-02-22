@@ -2,9 +2,9 @@ import { StyleSheet, SafeAreaView,View,Platform, StatusBar } from 'react-native'
 import Constants from 'expo-constants'
 import React from 'react'
 
-export default function AppSafeAreaView({children}) {
+export default function AppSafeAreaView({children, style}) {
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={[styles.screen,style]}>
       {children}
     </SafeAreaView>
   )

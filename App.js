@@ -5,12 +5,13 @@ import AppButton from "./app/assets/components/AppButton";
 import AppCard from "./app/assets/components/AppCard";
 import AppText from "./app/assets/components/AppText";
 import NewsDetailScreen from "./app/assets/screens/NewsDetailScreen";
-import AccountScreens from "./app/assets/screens/AccountScreens";
+import AccountScreens from "./app/assets/screens/AccountScreen";
 import AppListItem from "./app/assets/components/AppListItem";
 import AppIcon from "./app/assets/components/AppIcon";
 import MessageScreen from "./app/assets/screens/MessageScreen";
 import AppSafeAreaView from "./app/assets/components/AppSafeAreaView";
 import LoginScreen from "./app/assets/screens/LoginScreen";
+import AccountScreen from "./app/assets/screens/AccountScreen";
 //import { TextInput } from "react-native-gesture-handler";
 
 
@@ -23,9 +24,10 @@ export default function App() {
     //<AccountScreens/>
     //<SafeAreaView><AppListItem title="Josephen Roger" subTitle="Jan 08, 2022" image={require("./app/assets/profile.jpeg")}></AppListItem></SafeAreaView>
     //<SafeAreaView><AppIcon name="email" size={50} backgroundColor="red" iconColor="#fff"/></SafeAreaView>
-    <MessageScreen/>
+    //<MessageScreen/>
     //<AppSafeAreaView></AppSafeAreaView>
     //<LoginScreen/>
+    <AccountScreen/>
   );
 }
 

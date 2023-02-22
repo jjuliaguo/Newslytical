@@ -5,7 +5,8 @@ import colors from '../config/colors'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 //AppListItem is for author and icon, it has title and subtitle
 import AppListItemDeletable from './AppListItemDeletable'
-export default function AppListItem({title,subTitle,image, onPress, renderRightActions}) {
+import AppIcon from './AppIcon'
+export default function AppListItem({title,subTitle,image, IconComponent ,onPress, renderRightActions}) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight 
@@ -13,10 +14,11 @@ export default function AppListItem({title,subTitle,image, onPress, renderRightA
         onPress={onPress}
       >
         <View style={styles.container}>
-            <Image style={styles.image} source={image}/>
-            <View>
+            {IconComponent}
+            {image && <Image style={styles.image} source={image}/>}
+            <View style={styles.detailsContainer}>
                 <AppText style={styles.title}>{title}</AppText>
-                <AppText style={styles.subTitle}>{subTitle}</AppText>
+                {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
             </View>
         </View>
       </TouchableHighlight>
@@ -27,13 +29,14 @@ export default function AppListItem({title,subTitle,image, onPress, renderRightA
 const styles = StyleSheet.create({
   container:{
     flexDirection:"row",
-    padding:15
+    padding:15,
+    backgroundColor:colors.white,
   },
   image:{
     width:70,
     height:70,
     borderRadius:35,
-    marginRight:10
+    //marginRight:10
   },
   title:{
     padding:2.5,
@@ -44,5 +47,9 @@ const styles = StyleSheet.create({
     paddingTop:0,
     color: colors.medium
   },
+  detailsContainer:{
+    marginLeft: 10,
+    justifyContent:'center'
+  }
 
 })

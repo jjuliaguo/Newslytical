@@ -2,12 +2,12 @@ import { StyleSheet, Text, View, Image} from 'react-native'
 import React from 'react'
 import colors from '../config/colors'
 import AppText from './AppText'
-export default function AppCard() {
+export default function AppCard({title,subtitle,image}) {
   return (
     <View style={styles.card}>
-        <Image style={styles.cardImg} source = {require("../new1.png")}/>
-        <AppText style = {styles.cardTitle}>Mount Pleasant says goodbye to 'Oh Carolina' as hospitality group sets sights on South Vancouver</AppText>
-        <AppText style = {styles.cardPreviewDescription}>Residents of Mount Pleasant are mourning the loss of a grocer-café that served the community some much needed optimism during the pandemic....</AppText>
+        <Image style={styles.cardImg} source = {image}/>
+        <AppText style = {styles.cardTitle}>{title}</AppText>
+        <AppText style = {styles.cardPreviewDescription}>{subtitle} </AppText>
       
     </View>
   )

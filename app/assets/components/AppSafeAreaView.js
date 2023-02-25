@@ -5,7 +5,7 @@ import React from 'react'
 export default function AppSafeAreaView({children, style}) {
   return (
     <SafeAreaView style={[styles.screen,style]}>
-      {children}
+      <View style={style}>{children}</View>
     </SafeAreaView>
   )
 }
@@ -13,7 +13,9 @@ export default function AppSafeAreaView({children, style}) {
 const styles = StyleSheet.create({
     screen:{
         //paddingTop:Platform.OS ==="android" ? StatusBar.currentHeight:0
-        paddingTop:Constants.statusBarHeight
+        paddingTop:Constants.statusBarHeight,
+        
+        
         
     } 
 })

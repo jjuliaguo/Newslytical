@@ -12,6 +12,7 @@ import MessageScreen from "./app/assets/screens/MessageScreen";
 import AppSafeAreaView from "./app/assets/components/AppSafeAreaView";
 import LoginScreen from "./app/assets/screens/LoginScreen";
 import AccountScreen from "./app/assets/screens/AccountScreen";
+import MyPostsScreen from "./app/assets/screens/MyPostsScreen";
 //import { TextInput } from "react-native-gesture-handler";
 
 
@@ -27,7 +28,8 @@ export default function App() {
     //<MessageScreen/>
     //<AppSafeAreaView></AppSafeAreaView>
     //<LoginScreen/>
-    <AccountScreen/>
+    //<AccountScreen/>
+    <MyPostsScreen/>
   );
 }
 

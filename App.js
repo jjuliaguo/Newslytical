@@ -17,7 +17,11 @@ import AppPicker from "./app/assets/components/AppPicker";
 import AppTextInput from "./app/assets/components/AppTextInput";
 import {MaterialCommunityIcons, Entypo} from '@expo/vector-icons'
 //import { TextInput } from "react-native-gesture-handler";
-
+const categories = [
+  {label:"Local News", value:1},
+  {label:"Policy Update", value:2},
+  {label:"Celebratities and Entertainment", value:3},
+]
 export default function App() {
   return (
     //<SafeAreaView><AppButton title="Login" onPress={()=>console.log("login btn pressed")}/></SafeAreaView>
@@ -32,12 +36,9 @@ export default function App() {
     //<LoginScreen/>
     
     <AppSafeAreaView>
-      <AppPicker icon="apps" placeholder="Enter email"></AppPicker>
+      <AppPicker items={categories} icon="apps" placeholder="Categories"></AppPicker>
       <AppTextInput icon="apps" placeholder="Enter email"></AppTextInput>
-      <AppIcon name="email" size={70} backgroundColor="yellow" iconColor="red"/>
-      <AppIcon name="trash-can" size={70} backgroundColor="#888669" iconColor="green"/>
-       <AppButton title="LOGIN"/>
-      
+ 
     </AppSafeAreaView>
   
     //<AccountScreen/>

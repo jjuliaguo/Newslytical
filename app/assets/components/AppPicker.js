@@ -1,19 +1,36 @@
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import {StyleSheet, TouchableWithoutFeedback, View, FlatList, Button, Modal } from 'react-native'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
-import React from 'react'
-import { TextInput } from 'react-native-gesture-handler'
+import React, {useState} from 'react'
+
 import colors from '../config/colors'
 import defaultStyles from '../config/styles'
 import AppText from "./AppText"
+import AppSafeAreaView from './AppSafeAreaView'
+import AppPickerItem from "./AppPickerItem"
 
-
-export default function AppPicker({icon,placeholder,...otherProps}) {
+export default function AppPicker({icon,placeholder,items}) {
+  const [modelVisible, setModalVisiable]=useState(false)
   return (
+    <>
+    <TouchableWithoutFeedback onPress={()=>setModalVisiable(true)}>
     <View style ={styles.container}>
       {icon && (<MaterialCommunityIcons name={icon} size={20} color={colors.medium} style={styles.icon}/>)}  
       <AppText style={styles.text}> {placeholder}</AppText>
       <MaterialCommunityIcons name="chevron-down" size={20} color={colors.medium} />
     </View>
+    </TouchableWithoutFeedback>
+    <Modal visible={modelVisible} animationType="slide">
+      <AppSafeAreaView>
+        <Button title='Close' onPress={()=>setModalVisiable(false)}/>
+        <FlatList
+          data={items}
+          keyExtractor={item => item.value.toString()}
+          renderItem={({item})=>(<AppPickerItem label={item.label} onPress={()=>console.log(item.label)}/>)}
+        />
+      </AppSafeAreaView>
+    </Modal>
+     
+    </>
   )
 }
 

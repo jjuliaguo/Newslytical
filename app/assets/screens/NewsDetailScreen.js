@@ -37,10 +37,12 @@ const styles = StyleSheet.create({
       marginBottom:7,
       color:"#091BCD",
       marginTop:20,
+      padding:10
     },
     description:{
       fontSize:18,
       fontWeight:"400",
+    
     }
 
 })

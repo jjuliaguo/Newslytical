@@ -29,12 +29,14 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"600",
         marginBottom:7,
-        color:"#091BCD"
+        color:"#091BCD",
+    
 
     },
     cardPreviewDescription: {
         fontSize:18,
         fontWeight:"400",
+    
        
     },
 

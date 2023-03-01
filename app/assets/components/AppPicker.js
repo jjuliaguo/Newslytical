@@ -4,13 +4,15 @@ import React from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import colors from '../config/colors'
 import defaultStyles from '../config/styles'
+import AppText from "./AppText"
 
 
-export default function AppTextInput({icon,...otherProps}) {
+export default function AppPicker({icon,placeholder,...otherProps}) {
   return (
     <View style ={styles.container}>
-      {icon && <MaterialCommunityIcons name={icon} size={20} color={colors.medium} style={styles.icon}/>}
-      <TextInput  style={styles.text }{...otherProps} />
+      {icon && (<MaterialCommunityIcons name={icon} size={20} color={colors.medium} style={styles.icon}/>)}  
+      <AppText style={styles.text}> {placeholder}</AppText>
+      <MaterialCommunityIcons name="chevron-down" size={20} color={colors.medium} />
     </View>
   )
 }
@@ -22,13 +24,16 @@ const styles = StyleSheet.create({
      flexDirection:"row",
      width:"100%",
      padding:15,
-     marginVertical:10
+     marginVertical:10,
+     
   },
   icon:{
-    marginRight:10
+    marginRight:10,
+  
   },
-  text:{
-    fontSize:18,
 
-  }
-});
+  text:{
+    flex:1,
+  },
+
+})

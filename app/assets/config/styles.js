@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Platform } from "react-native";
+import { Platform } from "react-native";
 import colors from "./colors";
 
 export default {
+  colors,
   text: {
     color: colors.black,
     fontSize: 18,

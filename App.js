@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, Text, View, TextInput } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import WelcomeScreen from "./app/assets/screens/WelcomeScreen";
 import AppButton from "./app/assets/components/AppButton";
 import AppCard from "./app/assets/components/AppCard";
@@ -16,6 +16,7 @@ import MyPostsScreen from "./app/assets/screens/MyPostsScreen";
 import AppPicker from "./app/assets/components/AppPicker";
 import AppTextInput from "./app/assets/components/AppTextInput";
 import {MaterialCommunityIcons, Entypo} from '@expo/vector-icons'
+import RegisterScreen from "./app/assets/screens/RegisterScreen";
 //import { TextInput } from "react-native-gesture-handler";
 const categories = [
   {label:"Local News", value:1},
@@ -23,6 +24,7 @@ const categories = [
   {label:"Celebratities and Entertainment", value:3},
 ]
 export default function App() {
+  const [category,setCategory]=useState()
   return (
     //<SafeAreaView><AppButton title="Login" onPress={()=>console.log("login btn pressed")}/></SafeAreaView>
     //<WelcomeScreen/>
@@ -33,15 +35,21 @@ export default function App() {
     //<SafeAreaView><AppIcon name="email" size={50} backgroundColor="red" iconColor="#fff"/></SafeAreaView>
    // <MessageScreen/>
     //<AppSafeAreaView></AppSafeAreaView>
-    //<LoginScreen/>
-    
-    <AppSafeAreaView>
-      <AppPicker items={categories} icon="apps" placeholder="Categories"></AppPicker>
+  
+    /*<AppSafeAreaView>
+      <AppPicker 
+        selectedItem={category}
+        onSelectItem={item => setCategory(item)}
+        items={categories} 
+        icon="apps" 
+        placeholder="Categories"></AppPicker>
       <AppTextInput icon="apps" placeholder="Enter email"></AppTextInput>
  
-    </AppSafeAreaView>
+  </AppSafeAreaView>*/
   
     //<AccountScreen/>
+    <LoginScreen/>
+    //<RegisterScreen/>
     //<MyPostsScreen/>
   );
 }

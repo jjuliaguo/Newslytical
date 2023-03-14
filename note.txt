@@ -15,3 +15,15 @@ npm i expo-constants -> to remove Platform and Status Bar (List 3)
 
 
 1. Account screen css
+
+
+
+
+
+=========================================
+Register Screen:
+FirstName
+LastName
+Email
+Password
+Re-TypePassword

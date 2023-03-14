@@ -8,14 +8,16 @@ import AppText from "./AppText"
 import AppSafeAreaView from './AppSafeAreaView'
 import AppPickerItem from "./AppPickerItem"
 
-export default function AppPicker({icon,placeholder,items}) {
+export default function AppPicker({icon,placeholder,items,onSelectItem ,selectedItem}) {
   const [modelVisible, setModalVisiable]=useState(false)
   return (
     <>
     <TouchableWithoutFeedback onPress={()=>setModalVisiable(true)}>
     <View style ={styles.container}>
       {icon && (<MaterialCommunityIcons name={icon} size={20} color={colors.medium} style={styles.icon}/>)}  
-      <AppText style={styles.text}> {placeholder}</AppText>
+      <AppText style={styles.text}>
+         {selectedItem ? selectedItem : placeholder}
+      </AppText>
       <MaterialCommunityIcons name="chevron-down" size={20} color={colors.medium} />
     </View>
     </TouchableWithoutFeedback>
@@ -25,7 +27,15 @@ export default function AppPicker({icon,placeholder,items}) {
         <FlatList
           data={items}
           keyExtractor={item => item.value.toString()}
-          renderItem={({item})=>(<AppPickerItem label={item.label} onPress={()=>console.log(item.label)}/>)}
+          renderItem={({item})=>(
+            <AppPickerItem 
+              label={item.label} 
+              onPress={
+                ()=>{
+                  setModalVisiable(false)
+                  onSelectItem(item.label)
+                }}/>
+              )}
         />
       </AppSafeAreaView>
     </Modal>

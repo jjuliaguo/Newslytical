@@ -10,7 +10,7 @@ export default function AppTextInput({icon,...otherProps}) {
   return (
     <View style ={styles.container}>
       {icon && <MaterialCommunityIcons name={icon} size={20} color={colors.medium} style={styles.icon}/>}
-      <TextInput  style={styles.text }{...otherProps} />
+      <TextInput  style={styles.text} {...otherProps} />
     </View>
   )
 }
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     marginRight:10
   },
   text:{
-   
     fontSize:18,
     width:"100%"
 

@@ -17,6 +17,8 @@ import AppPicker from "./app/assets/components/AppPicker";
 import AppTextInput from "./app/assets/components/AppTextInput";
 import {MaterialCommunityIcons, Entypo} from '@expo/vector-icons'
 import RegisterScreen from "./app/assets/screens/RegisterScreen";
+import PublishScreen from "./app/assets/screens/PublishScreen";
+import AppDatePicker from "./app/assets/components/AppDatePicker";
 //import { TextInput } from "react-native-gesture-handler";
 const categories = [
   {label:"Local News", value:1},
@@ -48,9 +50,11 @@ export default function App() {
   </AppSafeAreaView>*/
   
     //<AccountScreen/>
-    <LoginScreen/>
+   // <LoginScreen/>
     //<RegisterScreen/>
+    <PublishScreen/>
     //<MyPostsScreen/>
+    //<AppSafeAreaView><AppDatePicker/></AppSafeAreaView>
   );
 }
 

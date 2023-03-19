@@ -1,52 +1,61 @@
-import { StyleSheet, Text, View,Image } from 'react-native'
-import AppSafeAreaView from '../components/AppSafeAreaView'
-import AppTextInput from '../components/AppTextInput'
-import React from 'react'
-import AppButton from '../components/AppButton'
+import { StyleSheet, Text, View, Image } from "react-native";
+import AppSafeAreaView from "../components/AppSafeAreaView";
+import React from "react";
+import * as Yup from "yup";
+import {AppForm, AppFormField, AppSubmitButton} from "../components/forms"
 
+const validationSchema = Yup.object().shape({
+  name:Yup.string().required()
+                   .min(3, 'Too Short! At Least 3 characters!')
+                   .max(50, 'Too Long! At Most 50 characters')
+                   .label("Name"),
+  email: Yup.string().required().email().label("Email"),
+  password: Yup.string().required().min(6).label("Password"),
+});
 export default function RegisterScreen() {
   return (
-    <AppSafeAreaView>
-        <Image style={styles.logo} source={require("../icon.png")}/>
-         <AppTextInput placeholder="First Name" 
-          autoCorrect={false} 
-          />
-          <AppTextInput placeholder="Last Name" 
-          autoCorrect={false} 
-          />
-          <AppTextInput placeholder="User Name" 
-          autoCapitalize="none" 
-          autoCorrect={false} 
+    <AppSafeAreaView style={styles.container}>
+      <AppForm
+        initialValues={{ name:"", email: "", password: "" }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+        validationSchema={validationSchema}
+      >
+        <AppFormField
+          placeholder="Name"
+          autoCorrect={false}
+          icon="account"
+          name="name"
+        />
+        <AppFormField
+          placeholder="User Name"
+          autoCapitalize="none"
+          autoCorrect={false}
           keyboardType="email-address"
           textContentType="emailAddress"
-          icon="email"/>
-        <AppTextInput 
+          icon="email"
+          name="email"
+        />
+        <AppFormField
           autoCapitalize="none"
           autoCorrect={false}
           textContentType="password"
           secureTextEntry
-          placeholder="Password" 
-          icon="key"/>
-          <AppTextInput 
-          autoCapitalize="none"
-          autoCorrect={false}
-          textContentType="password"
-          secureTextEntry
-          placeholder="Re-type Password" 
-          icon="key"/>
-          <AppButton title="Register" onPress={()=>console.log("Register!!!")}></AppButton>
-  </AppSafeAreaView>
-  )
+          placeholder="Password"
+          icon="key"
+          name="password"
+        />
+        <AppSubmitButton title="Register" />
+      </AppForm>
+    </AppSafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-    logo:{
-        width:80,
-        height:80,
-        alignSelf:"center",
-        marginTop:50,
-        marginBottom:20,
+  container: {
+    padding: 10,
+    //backgroundColor:"red"
+  },
 
-
-    }
-})
+});

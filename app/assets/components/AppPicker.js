@@ -3,7 +3,7 @@ import {MaterialCommunityIcons} from '@expo/vector-icons'
 import React, {useState} from 'react'
 
 import colors from '../config/colors'
-import defaultStyles from '../config/styles'
+
 import AppText from "./AppText"
 import AppSafeAreaView from './AppSafeAreaView'
 import AppPickerItem from "./AppPickerItem"
@@ -15,9 +15,11 @@ export default function AppPicker({icon,placeholder,items,onSelectItem ,selected
     <TouchableWithoutFeedback onPress={()=>setModalVisiable(true)}>
     <View style ={styles.container}>
       {icon && (<MaterialCommunityIcons name={icon} size={20} color={colors.medium} style={styles.icon}/>)}  
-      <AppText style={styles.text}>
-         {selectedItem ? selectedItem : placeholder}
-      </AppText>
+      {selectedItem ? (
+        <AppText style={styles.text}>{selectedItem.label}</AppText>
+      ):(
+        <AppText style={styles.text}>{placeholder}</AppText>
+      )}
       <MaterialCommunityIcons name="chevron-down" size={20} color={colors.medium} />
     </View>
     </TouchableWithoutFeedback>
@@ -33,7 +35,7 @@ export default function AppPicker({icon,placeholder,items,onSelectItem ,selected
               onPress={
                 ()=>{
                   setModalVisiable(false)
-                  onSelectItem(item.label)
+                  onSelectItem(item)
                 }}/>
               )}
         />

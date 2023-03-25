@@ -4,15 +4,15 @@ import React, { useState } from "react";
 import AppText from "./AppText";
 import colors from "../config/colors";
 
-export default function AppDatePicker() {
+export default function AppDatePicker(...otherProps) {
   const [date, setDate] = useState(new Date());
-  const onChange = (event, selectedDate) => {
-    setDate(selectedDate);
-  };
+
   return (
     <View>
       <View style={styles.container}>
-        <AppText style={styles.dateText}>{date.toLocaleString()}</AppText>
+        <AppText>
+          {date.toLocaleString()}
+        </AppText>
       </View>
       <View style={styles.pickersContainer}>
         <DateTimePicker
@@ -20,16 +20,20 @@ export default function AppDatePicker() {
           value={date}
           mode="date"
           is24Hour={true}
-          onChange={onChange}
+          onChange={(event, selectedDate)=>setDate(selectedDate)}
         />
         <DateTimePicker
           style={styles.pickerButton}
           value={date}
           mode="time"
           is24Hour={true}
-          onChange={onChange}
+          onChange={(event, selectedDate)=>setDate(selectedDate)}
         />
-        <Button style={styles.resetButton}title="Reset" onPress={()=>setDate(new Date())}></Button>
+        <Button
+          style={styles.resetButton}
+          title="Current Time"
+          onPress={(event, selectedDate)=>setDate(new Date())}
+        ></Button>
       </View>
     </View>
   );
@@ -48,17 +52,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     width: "100%",
   },
-  pickersContainer:{
-    flexDirection:"row",
-    paddingVertical:15,
-  }
-  ,
+  pickersContainer: {
+    flexDirection: "row",
+    paddingVertical: 15,
+  },
   pickerButton: {
-    
     //padding: 15,
   },
-  resetButton:{
-    justifyContent: 'flex-end',
-    alignSelf: 'flex-end',
-  }
+  resetButton: {
+    justifyContent: "flex-end",
+    alignSelf: "flex-end",
+  },
 });

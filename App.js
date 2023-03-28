@@ -36,7 +36,7 @@ export default function App() {
     //<AccountScreens/>
     //<SafeAreaView><AppListItem title="Josephen Roger" subTitle="Jan 08, 2022" image={require("./app/assets/profile.jpeg")}></AppListItem></SafeAreaView>
     //<SafeAreaView><AppIcon name="email" size={50} backgroundColor="red" iconColor="#fff"/></SafeAreaView>
-   // <MessageScreen/>
+    <MessageScreen/>
     //<AppSafeAreaView></AppSafeAreaView>
   
     /*<AppSafeAreaView>
@@ -53,7 +53,7 @@ export default function App() {
     //<AccountScreen/>
    // <LoginScreen/>
     //<RegisterScreen/>
-    <PublishScreen/>
+   // <PublishScreen/>
    
     //<MyPostsScreen/>
     //<AppSafeAreaView><AppDatePicker/></AppSafeAreaView>

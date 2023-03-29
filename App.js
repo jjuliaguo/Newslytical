@@ -53,7 +53,7 @@ export default function App() {
     //<AccountScreen/>
    // <LoginScreen/>
     //<RegisterScreen/>
-   // <PublishScreen/>
+   //<PublishScreen/>
    
     //<MyPostsScreen/>
     //<AppSafeAreaView><AppDatePicker/></AppSafeAreaView>

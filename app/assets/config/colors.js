@@ -12,6 +12,8 @@ export default {
     primaryGreen:"#40E0D0",
     primaryYellow:"#DFFF00",
     primaryBlue:"#6495ED",
-    primaryOrange: "#FF7F50"
+    primaryOrange: "#FF7F50",
+    primaryplaceholder:"#d0ccd0"
+
 
 };

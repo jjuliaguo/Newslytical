@@ -6,6 +6,6 @@ import defaultStyles from '../config/styles'
 //console.log(Constants)
 export default function AppText({children, style, ...otherProps}) {
   return (
-      <Text style={[defaultStyles.text,style]}>{children}</Text>
+      <Text style={[defaultStyles.text,style]}{...otherProps}>{children}</Text>
   )
 }

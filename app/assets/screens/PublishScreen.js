@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
     .min(3, "Too Short! At Least 3 characters!")
     .max(50, "Too Long! At Most 50 characters")
     .label("Title"),
-  //publishedDate: Yup.date().required(),
+  publishedDate: Yup.date().required(),
   category: Yup.object().required().nullable().label("Category"),
   article: Yup.string()
     .required()
@@ -40,12 +40,13 @@ export default function PublishScreen() {
       <AppForm
         initialValues={{
           title: "",
-          publishedDate: "now",
+          publishedDate: new Date(),
           category: null,
           article: "",
         }}
         onSubmit={(values) => {
-          console.log("hey");
+         
+          values.publishedDate=new Date();
           console.log(values);
         }}
         validationSchema={validationSchema}

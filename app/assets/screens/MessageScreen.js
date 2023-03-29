@@ -10,20 +10,20 @@ import AppListItemDeletable from "../components/AppListItemDeletable";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "Garry Chen",
+    description: "How are Julia?",
     image: require("../p1.jpg"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "John Doe",
+    description: "Hey Julia, did you finished your Math Assighnment?? I hace asome question !",
     image: require("../profile.jpeg"),
   },
   {
     id: 3,
-    title: "T3",
-    description: "D3",
+    title: "Helen Wange",
+    description: "Hey Julia, balbalblbalbbj jiajfjsaogjgoeagiajseoifh balblaigjasoif j l HEIHEHIAH dahdduhuhiau erkgp oafjdajfoisdjfovidjsafoinaaoinoai n jaogjsaoifndasoign aoingaoinga sng oifsbijgofdiJIRORINOIN ONRIONRI NON IGOF  JOIJ O JGFOI  HUFIAGHUDAS ",
     image: require("../p1.jpg"),
   },
 ];

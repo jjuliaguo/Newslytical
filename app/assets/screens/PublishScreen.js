@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet} from "react-native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import React from "react";
 import * as Yup from "yup";
@@ -8,10 +8,10 @@ import {
   AppFormPicker,
   AppSubmitButton,
 } from "../components/forms";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 
-//import AppFormDatePickerField from "../components/forms/AppFormDatePickerField";
-import AppDatePicker from "../components/AppDatePicker";
 
+//https://icons.expo.fyi/
 const validationSchema = Yup.object().shape({
   title: Yup.string()
     .required()
@@ -27,11 +27,17 @@ const validationSchema = Yup.object().shape({
     .label("Article"),
 });
 const categories = [
-  { label: "Politics", value: 1 },
-  { label: "Education", value: 2 },
-  { label: "Activities & Travel", value: 3 },
-  { label: "Sports & Entertainment", value: 4 },
-  { label: "Environment", value: 5 },
+  { label: "Politics", value: 1, backgroundColor:'#E1DAC6', icon: 'scale-balance' },
+  { label: "Education", value: 2, backgroundColor:'#E1DAC6', icon: 'book-open-page-variant' },
+  { label: "Sports", value:3, backgroundColor: '#E1DAC6', icon: 'basketball' },
+  { label: "Environment", value: 4, backgroundColor: '#E1DAC6', icon: 'earth'  },
+  { label: "Entertainment", value:5, backgroundColor: '#E1DAC6', icon: 'google-controller' },
+  { label: "Technology", value:6, backgroundColor: '#E1DAC6', icon: 'monitor-cellphone' },
+  { label: "Activities & Travel", value: 7, backgroundColor: '#E1DAC6', icon: 'airplane-takeoff' },
+  { label: "Art & Culture", value: 8, backgroundColor: '#E1DAC6', icon: 'palette' },
+  { label: "General News & Affairs", value:9, backgroundColor: '#E1DAC6', icon: 'newspaper-variant' },
+
+
 ];
 
 export default function PublishScreen() {
@@ -56,6 +62,9 @@ export default function PublishScreen() {
           placeholder="Category"
           items={categories}
           name="category"
+          nOfCol={2}
+          
+          PickerItemComponent={CategoryPickerItem}
         /> 
         <AppFormField
           multiline
@@ -73,6 +82,6 @@ export default function PublishScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: "yellow",
+    backgroundColor: "#E1DAC6",
   },
 });

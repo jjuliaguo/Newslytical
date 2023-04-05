@@ -13,7 +13,8 @@ export default {
     primaryYellow:"#DFFF00",
     primaryBlue:"#6495ED",
     primaryOrange: "#FF7F50",
-    primaryplaceholder:"#d0ccd0"
+    primaryplaceholder:"#d0ccd0",
+    summitButtonColor:"#AF8F60",
 
 
 };

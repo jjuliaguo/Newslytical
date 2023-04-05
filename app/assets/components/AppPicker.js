@@ -8,7 +8,7 @@ import AppText from "./AppText"
 import AppSafeAreaView from './AppSafeAreaView'
 import AppPickerItem from "./AppPickerItem"
 
-export default function AppPicker({icon,placeholder,items,onSelectItem ,selectedItem}) {
+export default function AppPicker({icon,placeholder,items,onSelectItem ,selectedItem, PickerItemComponent = AppPickerItem, nOfCol=1}) {
   const [modelVisible, setModalVisiable]=useState(false)
   return (
     <>
@@ -29,8 +29,10 @@ export default function AppPicker({icon,placeholder,items,onSelectItem ,selected
         <FlatList
           data={items}
           keyExtractor={item => item.value.toString()}
+          numColumns={nOfCol}
           renderItem={({item})=>(
-            <AppPickerItem 
+            <PickerItemComponent
+              item={item} //an object
               label={item.label} 
               onPress={
                 ()=>{

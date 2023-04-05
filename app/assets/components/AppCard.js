@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
         backgroundColor:colors.white,
         borderRadius:15,
         margin:20,
-        overflow:'hidden'
+        overflow:'hidden',
+    
     },
     cardImg:{
         width:"100%",  
@@ -30,12 +31,15 @@ const styles = StyleSheet.create({
         fontWeight:"600",
         marginBottom:7,
         color:"#091BCD",
+        marginHorizontal:5,
+        marginTop:10,
     
 
     },
     cardPreviewDescription: {
         fontSize:18,
         fontWeight:"400",
+        margin:10
     
        
     },

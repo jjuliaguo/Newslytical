@@ -1,11 +1,8 @@
 import { StyleSheet, FlatList } from "react-native";
 import React, { useState } from "react";
-import AppListItem from "../components/AppListItem";
 import AppSafeAreaView from "../components/AppSafeAreaView";
-import AppListItemSeparator from "../components/AppListItemSeparator";
 import colors from "../config/colors";
-import AppListItemDeletable from "../components/AppListItemDeletable";
-//import { StatusBar } from 'expo-status-bar'
+import {AppListItem,AppListItemDeletable,AppListItemSeparator} from "../components/lists"
 
 const initialMessages = [
   {
@@ -17,13 +14,15 @@ const initialMessages = [
   {
     id: 2,
     title: "John Doe",
-    description: "Hey Julia, did you finished your Math Assighnment?? I hace asome question !",
+    description:
+      "Hey Julia, did you finished your Math Assighnment?? I hace asome question !",
     image: require("../profile.jpeg"),
   },
   {
     id: 3,
     title: "Helen Wange",
-    description: "Hey Julia, balbalblbalbbj jiajfjsaogjgoeagiajseoifh balblaigjasoif j l HEIHEHIAH dahdduhuhiau erkgp oafjdajfoisdjfovidjsafoinaaoinoai n jaogjsaoifndasoign aoingaoinga sng oifsbijgofdiJIRORINOIN ONRIONRI NON IGOF  JOIJ O JGFOI  HUFIAGHUDAS ",
+    description:
+      "Hey Julia, balbalblbalbbj jiajfjsaogjgoeagiajseoifh balblaigjasoif j l HEIHEHIAH dahdduhuhiau erkgp oafjdajfoisdjfovidjsafoinaaoinoai n jaogjsaoifndasoign aoingaoinga sng oifsbijgofdiJIRORINOIN ONRIONRI NON IGOF  JOIJ O JGFOI  HUFIAGHUDAS ",
     image: require("../p1.jpg"),
   },
 ];

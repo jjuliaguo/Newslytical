@@ -2,10 +2,10 @@ import { View, StyleSheet, FlatList } from "react-native";
 import React from "react";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppIcon from "../components/AppIcon";
-import AppListItem from "../components/AppListItem";
+import {AppListItem,AppListItemSeparator} from "../components/lists";
 import colors from "../config/colors";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
-import AppListItemSeparator from "../components/AppListItemSeparator";
+
 
 const menuItems = [
   {
@@ -27,13 +27,13 @@ const menuItems = [
 export default function AccountScreen() {
   return (
     <AppSafeAreaView style={styles.screen}>
-     <View style={styles.containers}>
+      <View style={styles.containers}>
         <AppListItem
           title="Julia Guo"
           subTitle="juliaguo@gmail.com"
           image={require("../profile.jpeg")}
         />
-    </View>
+      </View>
       <View style={styles.containers}>
         <FlatList
           data={menuItems}
@@ -52,12 +52,11 @@ export default function AccountScreen() {
           )}
         />
       </View>
-     
+
       <AppListItem
         title="Log Out"
         IconComponent={<AppIcon name="logout" backgroundColor="#ffe66d" />}
       />
-    
     </AppSafeAreaView>
   );
 }
@@ -65,7 +64,7 @@ export default function AccountScreen() {
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.light,
-    flex:1
+    flex: 1,
   },
   containers: {
     marginVertical: 20,

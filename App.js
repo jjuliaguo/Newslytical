@@ -12,23 +12,14 @@ import AppSafeAreaView from "./app/assets/components/AppSafeAreaView";
 import * as ImagePicker from "expo-image-picker";
 import AppImageInput from "./app/assets/components/AppImageInput";
 import AppImageInputMuti from "./app/assets/components/AppImageInputMuti";
+import PublishScreen from "./app/assets/screens/PublishScreen";
 
 export default function App() {
-  const [imageUris, setImageUris] = useState([]);
-  const handleAdd = uri=>{
-    setImageUris([...imageUris,uri]);    
-  }
-  const handleRemove = uri => {
-    setImageUris(imageUris.filter(imageUri=> imageUri !== uri));
-  }
+  //const [imageUris, setImageUris] = useState([]);
+
   return (
-    <SafeAreaView>
-      <AppImageInputMuti
-        imageUris={imageUris}
-        onAddImage={handleAdd}
-        onRemoveImage={handleRemove}
-      />
-    </SafeAreaView>
+
+   <PublishScreen/>
   );
 }
 

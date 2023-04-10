@@ -15,7 +15,7 @@ import AppSafeAreaView from "./AppSafeAreaView";
 import colors from "../config/colors";
 export default function AppImageInput({ imageUri, onChangeImage }) {
   useEffect(() => {
-    requestPermission();
+    //requestPermission(); //unconmment later
   }, []);
   const requestPermission = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync;

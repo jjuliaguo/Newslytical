@@ -1,5 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {
+  ScrollView,
+  ScrollViewComponent,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import React, { useRef, useSyncExternalStore } from "react";
 import AppImageInput from "./AppImageInput";
 
 export default function AppImageInputMuti({
@@ -7,26 +13,40 @@ export default function AppImageInputMuti({
   onRemoveImage,
   onAddImage,
 }) {
+  const scrollView = useRef();
+
   return (
-    <View style={styles.container}>
-      {imageUris.map((uri) => (
-        <View key={uri} style={styles.image}>
-          <AppImageInput
-            imageUri={uri}
-            onChangeImage={() => onRemoveImage(uri)}
-          />
+    <View>
+      <ScrollView
+        horizontal
+        style={styles.scrollview}
+        ref={scrollView}
+        onContentSizeChange={() => scrollView.current.scrollToEnd()}
+      >
+        <View style={styles.container}>
+          {imageUris.map((uri) => (
+            <View key={uri} style={styles.image}>
+              <AppImageInput
+                imageUri={uri}
+                onChangeImage={() => onRemoveImage(uri)}
+              />
+            </View>
+          ))}
+          <AppImageInput onChangeImage={(uri) => onAddImage(uri)} />
         </View>
-      ))}
-      <AppImageInput onChangeImage={(uri) => onAddImage(uri)} />
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollview: {
+    //backgroundColor: "yellow",
+  },
   container: {
     flexDirection: "row",
   },
-  image:{
-    marginRight:10,
-  }
+  image: {
+    marginRight: 10,
+  },
 });

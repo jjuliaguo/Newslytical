@@ -9,6 +9,7 @@ import {
   AppSubmitButton,
 } from "../components/forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import AppFormImagePicker from "../components/forms/AppFormImagePicker";
 
 
 //https://icons.expo.fyi/
@@ -19,12 +20,13 @@ const validationSchema = Yup.object().shape({
     .max(50, "Too Long! At Most 50 characters")
     .label("Title"),
   publishedDate: Yup.date().required(),
-  category: Yup.object().required().nullable().label("Category"),
+  category: Yup.object().required().label("Category"),
   article: Yup.string()
     .required()
     .min(1, "Too Short! At Least 1 character!")
     .max(1000, "Too Long! At Most 1000 characters")
     .label("Article"),
+  images:Yup.array().min(1,"Please select at lease one images.")//At leaset one image -> min(1)
 });
 const categories = [
   { label: "Politics", value: 1, backgroundColor:'#E1DAC6', icon: 'scale-balance' },
@@ -36,8 +38,6 @@ const categories = [
   { label: "Activities & Travel", value: 7, backgroundColor: '#E1DAC6', icon: 'airplane-takeoff' },
   { label: "Art & Culture", value: 8, backgroundColor: '#E1DAC6', icon: 'palette' },
   { label: "General News & Affairs", value:9, backgroundColor: '#E1DAC6', icon: 'newspaper-variant' },
-
-
 ];
 
 export default function PublishScreen() {
@@ -49,6 +49,7 @@ export default function PublishScreen() {
           publishedDate: new Date(),
           category: null,
           article: "",
+          images:[]
         }}
         onSubmit={(values) => {
          
@@ -63,9 +64,11 @@ export default function PublishScreen() {
           items={categories}
           name="category"
           nOfCol={2}
-          
           PickerItemComponent={CategoryPickerItem}
         /> 
+        <AppFormImagePicker
+          name="images"
+        />
         <AppFormField
           multiline
           numberOfLines={10}

@@ -16,6 +16,16 @@ npm i expo-constants -> to remove Platform and Status Bar (List 3)
 
 1. Account screen css
 
+Task to do:
+[x] Add ImagePicker to the publish form, improve if needed
+2. Get Location(if needed)
+3. navigation bar, routing ()
+4.database and api
+5. cache
+6. push notification
+finished
+
+
 
 
 

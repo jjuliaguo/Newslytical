@@ -55,7 +55,7 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    //backgroundColor:"red"
+    backgroundColor:"white"
   },
 
 });

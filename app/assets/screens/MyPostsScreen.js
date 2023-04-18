@@ -3,8 +3,8 @@ import { FlatList, StyleSheet } from "react-native";
 import React from "react";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppCard from "../components/AppCard";
-import { TextInput } from "react-native-gesture-handler";
 import colors from "../config/colors";
+
 const listings = [
   {
     id: 1,
@@ -25,7 +25,7 @@ const listings = [
     image: require("../new1.png"),
   }
 ];
-export default function MyPostsScreen(props) {
+export default function MyPostsScreen({navigation}) {
   return (
     <AppSafeAreaView style={styles.screen}>
        <FlatList 
@@ -36,6 +36,7 @@ export default function MyPostsScreen(props) {
                 title={item.title}
                 subtitle={item.previewPost}
                 image={item.image}
+                onPress={()=>{navigation.navigate("NewsDetail",item)}}
             />    
           }
        />

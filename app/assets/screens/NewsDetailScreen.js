@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, ScrollView, Image } from "react-native";
 import React from "react";
 import AppText from "../components/AppText";
 import AppListItem from "../components/lists/AppListItem";
 
 export default function NewsDetailScreen() {
   return (
-    <View style={styles.card}>
+    <ScrollView style={styles.card}>
       <Image style={styles.image} source={require("../new1.png")} />
       <AppListItem title="Josephen Roger" subTitle="Jan 08, 2022" />
       <AppText style={styles.title}>
@@ -48,7 +48,7 @@ export default function NewsDetailScreen() {
         thing,” Iranzad said, adding the new operators could resume business as
         early as this spring.{" "}
       </AppText>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -69,5 +69,6 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 18,
     fontWeight: "400",
+    padding:10,
   },
 });

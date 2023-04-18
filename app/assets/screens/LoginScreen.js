@@ -46,7 +46,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    //backgroundColor:"red"
+    backgroundColor:"white"
   },
   logo: {
     width: 80,

@@ -2,14 +2,16 @@ import { StyleSheet, Text, View, Image} from 'react-native'
 import React from 'react'
 import colors from '../config/colors'
 import AppText from './AppText'
-export default function AppCard({title,subtitle,image}) {
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+export default function AppCard({title,subtitle,image, onPress}) {
   return (
+    <TouchableWithoutFeedback onPress={onPress}>
     <View style={styles.card}>
         <Image style={styles.cardImg} source = {image}/>
         <AppText style = {styles.cardTitle}>{title}</AppText>
         <AppText style = {styles.cardPreviewDescription}>{subtitle} </AppText>
-      
     </View>
+    </TouchableWithoutFeedback>
   )
 }
 

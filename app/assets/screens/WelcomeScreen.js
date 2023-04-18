@@ -3,7 +3,7 @@ import AppButton from "../components/AppButton";
 import React from "react";
 import colors from "../config/colors";
 
-export default function WelcomeScreen(props) {
+export default function WelcomeScreen({navigation}) {
   return (
     <ImageBackground source={require("./workplace.jpg")} blurRadius={2} style={styles.background}>
       <View style={styles.iconContainer}>
@@ -15,8 +15,8 @@ export default function WelcomeScreen(props) {
        
      
       <View style={styles.buttonContainer}>
-        <AppButton title="login" bgColor="primary"  />
-        <AppButton title="Register" bgColor="primaryD3" textColor="white" />
+        <AppButton title="login" bgColor="primary" onPress={()=>navigation.navigate("Login")} />
+        <AppButton title="Register" bgColor="primaryD3" textColor="white" onPress={()=>navigation.navigate("Register")}/>
       </View>
     </ImageBackground>
   );

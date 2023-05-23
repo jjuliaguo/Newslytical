@@ -9,7 +9,7 @@ import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 
 const menuItems = [
   {
-    title: "My Post",
+    title: "My Posts",
     icon: {
       name: "typewriter",
       backgroundColor: "#FF7F50",
@@ -21,10 +21,11 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.primaryGreen,
     },
+    targetScreen:"Message"
   },
 ];
 
-export default function AccountScreen() {
+export default function AccountScreen({navigation}) {
   return (
     <AppSafeAreaView style={styles.screen}>
       <View style={styles.containers}>
@@ -42,6 +43,7 @@ export default function AccountScreen() {
           renderItem={({ item }) => (
             <AppListItem
               title={item.title}
+              onPress={()=>navigation.navigate(item.targetScreen)}
               IconComponent={
                 <AppIcon
                   name={item.icon.name}

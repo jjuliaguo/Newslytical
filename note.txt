@@ -32,7 +32,8 @@ Stack
 Tab
 Drawer
 
-
+Current Bug:
+Andriod Keyboard doest close when user finished editing new post
 
 
 

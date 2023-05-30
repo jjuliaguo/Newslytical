@@ -11,31 +11,50 @@ const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+       
+        tabBarStyle: {
+          height: 90,
+          paddingHorizontal: 5,
+          paddingTop: 0,
+          backgroundColor: "rgba(34,36,40,1)",
+          position: "absolute",
+          borderTopWidth: 0,
+        },
+      })}
+    >
       <Tab.Screen
         name={route.HOME}
         component={FeedNavigator}
-        options={{ 
+        options={{
           headerShown: false,
-          tabBarIcon:({color,size})=><MaterialCommunityIcons name="home" color={color} size={size}/>
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
         }}
       />
       <Tab.Screen
         name={route.PUBLISH}
         component={PublishScreen}
-        options={({navigation})=>({ 
-          tabBarButton : ()=> <PublishTabButton onPress={() => navigation.navigate(route.PUBLISH)}/>,
+        options={({ navigation }) => ({
+          tabBarButton: () => (
+            <PublishTabButton
+              onPress={() => navigation.navigate(route.PUBLISH)}
+            />
+          ),
           headerShown: false,
           //tabBarIcon:({color,size})=><MaterialCommunityIcons name="plus-circle" color={color} size={size}/>,
-          
         })}
       />
       <Tab.Screen
         name={route.ACCOUNT}
         component={AccountNavigator}
-        options={{ 
+        options={{
           headerShown: false,
-          tabBarIcon:({color,size})=><MaterialCommunityIcons name="account" color={color} size={size}/>
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
         }}
       />
     </Tab.Navigator>

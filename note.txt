@@ -20,7 +20,8 @@ Task to do:
 [x] Add ImagePicker to the publish form, improve if needed
 [x]. Get Location(if needed)
 [x]. navigation bar, routing ()
-4.database and api
+[x] api
+4.database 
 5. cache
 6. push notification
 finished
@@ -39,12 +40,12 @@ Andriod Keyboard doest close when user finished editing new post
 
 
 =========================================
-Register Screen:
-FirstName
-LastName
-Email
-Password
-Re-TypePassword
+API Layer:
+UI ---> API
+
+Get --> ALL POSTS
+POST --->
+PUT --> Editing POST
 
 =====================================
 continue RegisterScreen

@@ -5,12 +5,12 @@ import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppCard from "../components/AppCard";
 import colors from "../config/colors";
 import route from "../components/navigation/route";
-import allPostsAPI from "../../api/allPosts";
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
 import AppActivityIndicator from "../components/AppActivityIndicator";
 import useApi from "../hooks/useApi";
 
+import lisingsApi from "../../api/listings"
 // const listings = [
 //   {
 //     id: 1,
@@ -34,9 +34,9 @@ import useApi from "../hooks/useApi";
 export default function MyPostsScreen({ navigation }) {
 
   //const {data: listings,error,loading, request: loadListings}= useApi(allPostsAPI.getListings);
-  const getAllPostsApi = useApi(allPostsAPI.getListings);
+  const getListingsApi = useApi(lisingsApi.getListings);
   useEffect(() => {
-    getAllPostsApi.request(1,2,3);
+    getListingsApi.request(1,2,3)
   }, []);
 
 
@@ -48,15 +48,15 @@ export default function MyPostsScreen({ navigation }) {
   }
   return (
     <AppSafeAreaView style={styles.screen}>
-      {getAllPostsApi.error && (
+      {getListingsApi.error && (
         <>
           <AppText>Couldn't retrieve the result</AppText>
-          <Button title="Retry" onPress={loadListings}/>
+          <Button title="Retry" onPress={getListingsApi.request}/>
         </>
       )}
-      <ActivityIndicator animating={getAllPostsApi.loading} size="large"/>
+      <ActivityIndicator animating={getListingsApi.loading} size="large"/>
       <FlatList
-        data={getAllPostsApi.data}
+        data={getListingsApi.data}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <AppCard

@@ -1,4 +1,4 @@
-import { StyleSheet} from "react-native";
+import { Alert, StyleSheet} from "react-native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import React from "react";
 import * as Yup from "yup";
@@ -10,7 +10,7 @@ import {
 } from "../components/forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import AppFormImagePicker from "../components/forms/AppFormImagePicker";
-
+import listingsApi from "../../api/listings";
 
 //https://icons.expo.fyi/
 const validationSchema = Yup.object().shape({
@@ -41,6 +41,17 @@ const categories = [
 ];
 
 export default function PublishScreen() {
+  const handleSubmit = async (listing) =>{
+    listing.publishedDate=new Date().toISOString();
+    const result = await listingsApi.addListings({...listing })
+    if (!result.ok){
+      //console.log(result)
+      return alert("Oops! Something went wrong, Please try again later");
+    }else{  
+      //console.log(result)
+      alert("Upload Success")
+    }
+  } 
   return (
     <AppSafeAreaView style={styles.container}>
       <AppForm
@@ -51,11 +62,12 @@ export default function PublishScreen() {
           article: "",
           images:[]
         }}
-        onSubmit={(values) => {
+        // onSubmit={(values) => {
          
-          values.publishedDate=new Date();
-          console.log(values);
-        }}
+        //   values.publishedDate=new Date();
+        //   console.log(values);
+        // }}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <AppFormField placeholder="Title" autoCorrect={false} name="title" />

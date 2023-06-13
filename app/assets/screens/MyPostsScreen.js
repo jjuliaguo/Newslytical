@@ -1,5 +1,5 @@
 //lisings Screen
-import { ActivityIndicator, Button, FlatList, StyleSheet } from "react-native";
+import { ActivityIndicator, Button, FlatList, StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppCard from "../components/AppCard";
@@ -61,7 +61,7 @@ export default function MyPostsScreen({ navigation }) {
         renderItem={({ item }) => (
           <AppCard
             title={item.title}
-            subtitle={getWordStr(item.postContent)}
+            subtitle={getWordStr(item.article)}
             imageUrl={item.images[0].url}
             onPress={() => {
               navigation.navigate(route.NEWS_DETAILS, item);
@@ -69,6 +69,7 @@ export default function MyPostsScreen({ navigation }) {
           />
         )}
       />
+      <View style={{height:100}}></View>
     </AppSafeAreaView>
   );
 }

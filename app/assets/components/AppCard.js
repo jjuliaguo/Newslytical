@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"600",
         marginBottom:7,
-        color:"#091BCD",
+        color:colors.secondaryD2,
         marginHorizontal:5,
         marginTop:10,
     
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     cardPreviewDescription: {
         fontSize:18,
         fontWeight:"400",
-        margin:10
+        margin:10,
+        color:colors.black,
     
        
     },

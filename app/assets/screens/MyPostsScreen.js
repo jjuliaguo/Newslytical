@@ -76,6 +76,6 @@ export default function MyPostsScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: colors.light,
+    backgroundColor: colors.primaryL2,
   },
 });

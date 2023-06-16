@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AccountScreen, LoginScreen, NewsDetailScreen, PublishScreen } from './app/assets/screens';
+import { AccountScreen, LoginScreen, NewsDetailScreen, PublishScreen, WelcomeScreen } from './app/assets/screens';
 import AuthNavigator from './app/assets/components/navigation/AuthNavigator';
 import navigationTheme from './app/assets/components/navigation/navigationTheme';
 import AppNavigator from './app/assets/components/navigation/AppNavigator';
@@ -76,9 +76,12 @@ function MyTabs() {
 export default function App() {
   return (
     
+    
     <NavigationContainer theme={navigationTheme}>
       <AppNavigator/>
     </NavigationContainer>
+    //<WelcomeScreen/>
+   
   
    //<LoginScreen/>
   );

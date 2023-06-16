@@ -21,12 +21,12 @@ Task to do:
 [x]. Get Location(if needed)
 [x]. navigation bar, routing ()
 [x] api
-4.database 
+[x] database 
 5. cache
 6. push notification
 finished
-
-
+# image max 3 pictures
+# not yet : havent choose done animation from lottie
 
 navigators: 
 Stack

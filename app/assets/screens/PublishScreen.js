@@ -1,6 +1,6 @@
-import { Alert, StyleSheet} from "react-native";
+import { Alert, StyleSheet } from "react-native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import {
   AppForm,
@@ -11,6 +11,8 @@ import {
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import AppFormImagePicker from "../components/forms/AppFormImagePicker";
 import listingsApi from "../../api/listings";
+import UploadScreen from "./UploadScreen";
+import colors from "../config/colors";
 
 //https://icons.expo.fyi/
 const validationSchema = Yup.object().shape({
@@ -26,44 +28,92 @@ const validationSchema = Yup.object().shape({
     .min(1, "Too Short! At Least 1 character!")
     .max(1000, "Too Long! At Most 1000 characters")
     .label("Article"),
-  images:Yup.array().min(1,"Please select at lease one images.")//At leaset one image -> min(1)
+  images: Yup.array().min(1, "Please select at lease one images."), //At leaset one image -> min(1)
 });
 const categories = [
-  { label: "Politics", value: 1, backgroundColor:'#E1DAC6', icon: 'scale-balance' },
-  { label: "Education", value: 2, backgroundColor:'#E1DAC6', icon: 'book-open-page-variant' },
-  { label: "Sports", value:3, backgroundColor: '#E1DAC6', icon: 'basketball' },
-  { label: "Environment", value: 4, backgroundColor: '#E1DAC6', icon: 'earth'  },
-  { label: "Entertainment", value:5, backgroundColor: '#E1DAC6', icon: 'google-controller' },
-  { label: "Technology", value:6, backgroundColor: '#E1DAC6', icon: 'monitor-cellphone' },
-  { label: "Activities & Travel", value: 7, backgroundColor: '#E1DAC6', icon: 'airplane-takeoff' },
-  { label: "Art & Culture", value: 8, backgroundColor: '#E1DAC6', icon: 'palette' },
-  { label: "General News & Affairs", value:9, backgroundColor: '#E1DAC6', icon: 'newspaper-variant' },
+  {
+    label: "Politics",
+    value: 1,
+    backgroundColor: "#E1DAC6",
+    icon: "scale-balance",
+  },
+  {
+    label: "Education",
+    value: 2,
+    backgroundColor: "#E1DAC6",
+    icon: "book-open-page-variant",
+  },
+  { label: "Sports", value: 3, backgroundColor: "#E1DAC6", icon: "basketball" },
+  { label: "Environment", value: 4, backgroundColor: "#E1DAC6", icon: "earth" },
+  {
+    label: "Entertainment",
+    value: 5,
+    backgroundColor: "#E1DAC6",
+    icon: "google-controller",
+  },
+  {
+    label: "Technology",
+    value: 6,
+    backgroundColor: "#E1DAC6",
+    icon: "monitor-cellphone",
+  },
+  {
+    label: "Activities & Travel",
+    value: 7,
+    backgroundColor: "#E1DAC6",
+    icon: "airplane-takeoff",
+  },
+  {
+    label: "Art & Culture",
+    value: 8,
+    backgroundColor: "#E1DAC6",
+    icon: "palette",
+  },
+  {
+    label: "General News & Affairs",
+    value: 9,
+    backgroundColor: "#E1DAC6",
+    icon: "newspaper-variant",
+  },
 ];
 
 export default function PublishScreen() {
-  const handleSubmit = async (listing) =>{
-    listing.publishedDate=new Date().toISOString();
-    const result = await listingsApi.addListings({...listing })
-    if (!result.ok){
+  const [uploadScreenVisible, setUploadScreenVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const handleSubmit = async (listing) => {
+    setProgress(0);
+    setUploadScreenVisible(true);
+    //listing.publishedDate = new Date().toISOString();
+    const result = await listingsApi.addListings({ ...listing }, (progress) =>
+      setProgress(progress)
+    );
+
+    if (!result.ok) {
       //console.log(result)
+      setUploadScreenVisible(false);
       return alert("Oops! Something went wrong, Please try again later");
-    }else{  
+    } else {
       //console.log(result)
-      alert("Upload Success")
+      //alert("Upload Success");
     }
-  } 
+  };
   return (
     <AppSafeAreaView style={styles.container}>
+      <UploadScreen
+        onDone={() => setUploadScreenVisible(false)}
+        progress={progress}
+        visible={uploadScreenVisible}
+      />
       <AppForm
         initialValues={{
           title: "",
           publishedDate: new Date(),
           category: null,
           article: "",
-          images:[]
+          images: [],
         }}
         // onSubmit={(values) => {
-         
+
         //   values.publishedDate=new Date();
         //   console.log(values);
         // }}
@@ -77,10 +127,8 @@ export default function PublishScreen() {
           name="category"
           nOfCol={2}
           PickerItemComponent={CategoryPickerItem}
-        /> 
-        <AppFormImagePicker
-          name="images"
         />
+        <AppFormImagePicker name="images" />
         <AppFormField
           multiline
           numberOfLines={10}
@@ -97,6 +145,6 @@ export default function PublishScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: "#E1DAC6",
+    backgroundColor: colors.primaryL2,
   },
 });

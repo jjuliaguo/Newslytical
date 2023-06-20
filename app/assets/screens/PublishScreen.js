@@ -80,13 +80,14 @@ const categories = [
 export default function PublishScreen() {
   const [uploadScreenVisible, setUploadScreenVisible] = useState(false);
   const [progress, setProgress] = useState(0);
-  const handleSubmit = async (listing) => {
+  const handleSubmit = async (listing, { resetForm }) => {
     setProgress(0);
     setUploadScreenVisible(true);
     //listing.publishedDate = new Date().toISOString();
-    const result = await listingsApi.addListings({ ...listing }, (progress) =>
-      setProgress(progress)
-    );
+    const result = await listingsApi.addListings({ ...listing }, (progress) => {
+      console.log("Progress:", progress);
+      setProgress(progress);
+    });
 
     if (!result.ok) {
       //console.log(result)
@@ -95,6 +96,7 @@ export default function PublishScreen() {
     } else {
       //console.log(result)
       //alert("Upload Success");
+      resetForm();
     }
   };
   return (

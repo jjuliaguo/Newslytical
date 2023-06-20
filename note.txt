@@ -21,7 +21,8 @@ Task to do:
 [x]. Get Location(if needed)
 [x]. navigation bar, routing ()
 [x] api
-[x] database 
+[x] database
+[] offline support 
 5. cache
 6. push notification
 finished

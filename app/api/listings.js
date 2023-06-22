@@ -3,7 +3,11 @@ import client from "./client";
 const endpoint = "/listings";
 
 //get all posted news from server
+
 const getListings = () => client.get(endpoint);
+
+
+
 const addListings = (listing, onUploadProgress) => {
   const data = new FormData();
   data.append("title", listing.title);

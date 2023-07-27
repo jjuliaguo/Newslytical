@@ -6,6 +6,7 @@ import {AppListItem,AppListItemSeparator} from "../components/lists";
 import colors from "../config/colors";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 import AuthContext from "../../auth/context";
+import authStorage from "../../auth/storage";
 
 
 const menuItems = [
@@ -27,7 +28,11 @@ const menuItems = [
 ];
 
 export default function AccountScreen({navigation}) {
-  const {user} = useContext(AuthContext)
+  const {user, setUser} = useContext(AuthContext);
+  const handleLogOut = () =>{
+    setUser(null)
+    authStorage.removeToken();
+  }
   return (
     <AppSafeAreaView style={styles.screen}>
       <View style={styles.containers}>
@@ -60,6 +65,7 @@ export default function AccountScreen({navigation}) {
       <AppListItem
         title="Log Out"
         IconComponent={<AppIcon name="logout" backgroundColor="#ffe66d" />}
+        onPress={handleLogOut}
       />
     </AppSafeAreaView>
   );

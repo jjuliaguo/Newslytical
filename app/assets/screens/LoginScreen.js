@@ -6,6 +6,7 @@ import jwtDecode from "jwt-decode";
 import {AppErrorMessage, AppForm, AppFormField, AppSubmitButton} from "../components/forms";
 import authApi from "../../api/auth";
 import AuthContext from "../../auth/context";
+import authStorage from "../../auth/storage";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -21,6 +22,7 @@ export default function LoginScreen() {
    const user = jwtDecode(result.data)
    //console.log(user);
     authContext.setUser(user);
+    authStorage.storeToken(result.data);
   }
   return (
     <AppSafeAreaView style={styles.container}>

@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {AppLoading} from 'expo'
 
 import {
   AccountScreen,
@@ -16,7 +17,8 @@ import AppNavigator from "./app/assets/components/navigation/AppNavigator";
 import OfflineNotice from "./app/assets/components/OfflineNotice";
 import AuthNavigator from "./app/assets/components/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
-
+import authStorage from "./app/auth/storage";
+import jwtDecode from "jwt-decode";
 
 function Feed() {
   return <NewsDetailScreen />;
@@ -80,7 +82,18 @@ function MyTabs() {
 
 export default function App() {
 
-  const[user, setUser] = useState()
+  const[user, setUser] = useState();
+  const restoreToken = async() => {
+    const token = await authStorage.getToken();
+    if (!token) return;
+    setUser(jwtDecode(token));
+
+  }
+
+  useEffect(()=>{
+    restoreToken()
+  }, [])
+  
   return (
     <AuthContext.Provider value={{user, setUser}}>
     <OfflineNotice/>

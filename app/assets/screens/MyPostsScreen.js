@@ -66,6 +66,7 @@ export default function MyPostsScreen({ navigation }) {
             onPress={() => {
               navigation.navigate(route.NEWS_DETAILS, item);
             }}
+            thumbnailUrl ={item.images[0].thumbnailUrl}
           />
         )}
       />

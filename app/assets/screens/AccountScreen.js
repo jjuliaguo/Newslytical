@@ -1,10 +1,11 @@
 import { View, StyleSheet, FlatList } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppIcon from "../components/AppIcon";
 import {AppListItem,AppListItemSeparator} from "../components/lists";
 import colors from "../config/colors";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
+import AuthContext from "../../auth/context";
 
 
 const menuItems = [
@@ -26,12 +27,13 @@ const menuItems = [
 ];
 
 export default function AccountScreen({navigation}) {
+  const {user} = useContext(AuthContext)
   return (
     <AppSafeAreaView style={styles.screen}>
       <View style={styles.containers}>
         <AppListItem
-          title="Julia Guo"
-          subTitle="juliaguo@gmail.com"
+          title={user.name}
+          subTitle={user.email}
           image={require("../profile.jpeg")}
         />
       </View>
@@ -65,7 +67,7 @@ export default function AccountScreen({navigation}) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: colors.light,
+    backgroundColor: colors.primaryL2,
     flex: 1,
   },
   containers: {

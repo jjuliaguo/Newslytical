@@ -1,19 +1,20 @@
-import { StyleSheet, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, Text, ScrollView } from "react-native";
 import React from "react";
 import AppText from "../components/AppText";
 import AppListItem from "../components/lists/AppListItem";
+import { Image } from "react-native-expo-image-cache";
 
 export default function NewsDetailScreen({route}) {
   const post=route.params;
   return (
     <ScrollView style={styles.card}>
-      <Image style={styles.image} source={post.image} />
+      <Image style={styles.image} uri={post.images[0].url} tint="light" preview={{uri:post.images[0].thumbnailUrl}}/>
       <AppListItem title="Josephen Roger" subTitle="Jan 08, 2022" />
       <AppText style={styles.title}>
         {post.title}
       </AppText>
       <AppText style={styles.description}>
-        {post.postContent}
+        {post.article}
       </AppText>
     </ScrollView>
   );
@@ -37,5 +38,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "400",
     padding:10,
+    marginBottom:200,
   },
 });

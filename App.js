@@ -1,21 +1,22 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
   AccountScreen,
-  LoginScreen,
+
   NewsDetailScreen,
-  PublishScreen,
-  WelcomeScreen,
+
 } from "./app/assets/screens";
-import AuthNavigator from "./app/assets/components/navigation/AuthNavigator";
+
 import navigationTheme from "./app/assets/components/navigation/navigationTheme";
 import AppNavigator from "./app/assets/components/navigation/AppNavigator";
-import FeedNavigator from "./app/assets/components/navigation/FeedNavigator";
-import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
+import OfflineNotice from "./app/assets/components/OfflineNotice";
+import AuthNavigator from "./app/assets/components/navigation/AuthNavigator";
+import AuthContext from "./app/auth/context";
+
 
 function Feed() {
   return <NewsDetailScreen />;
@@ -78,23 +79,14 @@ function MyTabs() {
 }
 
 export default function App() {
-  //const unsubscribe = NetInfo.addEventListener((netInfo) => console.log(netInfo))m
-  const demo = async () => {
-    try {
-      await AsyncStorage.setItem("person", JSON.stringify({id:1}));
-      const value = await AsyncStorage.getItem("person");
-      const person = JSON.parse(value)
-      console.log(value)
 
-    } catch (error){
-      console.log(error);
-    } 
-  };
-
-  demo();
+  const[user, setUser] = useState()
   return (
+    <AuthContext.Provider value={{user, setUser}}>
+    <OfflineNotice/>
     <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />
+      {user ? <AppNavigator/> : <AuthNavigator />}
     </NavigationContainer>
+    </AuthContext.Provider>
   );
 }

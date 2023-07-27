@@ -1,13 +1,14 @@
-import { StyleSheet, Text, View, Image} from 'react-native'
+import { StyleSheet, Text, View} from 'react-native'
 import React from 'react'
 import colors from '../config/colors'
 import AppText from './AppText'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
-export default function AppCard({title,subtitle,imageUrl, onPress}) {
+import {Image} from 'react-native-expo-image-cache'
+export default function AppCard({title,subtitle,imageUrl, onPress, thumbnailUrl}) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
     <View style={styles.card}>
-        <Image style={styles.cardImg} source = {{uri:imageUrl}}/>
+        <Image style={styles.cardImg} tint="light" preview={{uri:thumbnailUrl}} uri={imageUrl}/>
         <AppText style = {styles.cardTitle}>{title}</AppText>
         <AppText style = {styles.cardPreviewDescription}>{subtitle} </AppText>
     </View>

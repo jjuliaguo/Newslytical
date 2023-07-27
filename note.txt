@@ -22,7 +22,7 @@ Task to do:
 [x]. navigation bar, routing ()
 [x] api
 [x] database
-[] offline support :
+[x] offline support :
   1. Notify user that internet connection is offline
   2. disable
   3. load cache data (timestamp + remove expired item)
@@ -30,6 +30,7 @@ Task to do:
     -secureStore (provide by expo team, for sensitibe date)
     -SQLite (Andriod)
   4. store user actions
+  
 6. push notification
 finished
 # image max 3 pictures

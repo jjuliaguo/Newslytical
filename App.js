@@ -3,8 +3,8 @@ import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {AppLoading} from 'expo'
 
+import AppLoading from 'expo-app-loading';
 import {
   AccountScreen,
 
@@ -83,6 +83,7 @@ function MyTabs() {
 export default function App() {
 
   const[user, setUser] = useState();
+  const [isReady, setIsReady] = useState(false);
   const restoreToken = async() => {
     const token = await authStorage.getToken();
     if (!token) return;
@@ -90,9 +91,8 @@ export default function App() {
 
   }
 
-  useEffect(()=>{
-    restoreToken()
-  }, [])
+ if (!isReady)
+  return <AppLoading startAsync={restoreToken} onFinish={()=>setIsReady(true)} onError={()=>console.log("splash screen error")}></AppLoading>
   
   return (
     <AuthContext.Provider value={{user, setUser}}>

@@ -30,4 +30,4 @@ const removeToken = async() =>{
     }
 }
 
-export default {getToken, getUser ,removeToken ,storeToken}
+export default {getUser ,removeToken ,storeToken}

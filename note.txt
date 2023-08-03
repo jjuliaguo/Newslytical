@@ -23,13 +23,13 @@ Task to do:
 [x] api
 [x] database
 [x] offline support :
-  1. Notify user that internet connection is offline
-  2. disable
-  3. load cache data (timestamp + remove expired item)
+[x]  1. Notify user that internet connection is offline
+ [X] 2. disable
+[X]3. load cache data (timestamp + remove expired item)
     -AsyncStorge (unsentive)
     -secureStore (provide by expo team, for sensitibe date)
     -SQLite (Andriod)
-  4. store user actions
+ [X] 4. store user actions
   
 6. push notification
 finished

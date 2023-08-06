@@ -1,27 +1,84 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet } from "react-native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
-import {AppForm, AppFormField, AppSubmitButton} from "../components/forms"
+import {
+  AppErrorMessage,
+  AppForm,
+  AppFormField,
+  AppSubmitButton,
+} from "../components/forms";
+import usersApi from "../../api/user";
+import authApi from "../../api/auth";
+import useAuth from "../../auth/useAuth";
+import useApi from "../hooks/useApi";
+;
+import AppActivityIndicator from "../components/AppActivityIndicator";
 
 const validationSchema = Yup.object().shape({
-  name:Yup.string().required()
-                   .min(3, 'Too Short! At Least 3 characters!')
-                   .max(50, 'Too Long! At Most 50 characters')
-                   .label("Name"),
+  name: Yup.string()
+    .required()
+    .min(3, "Too Short! At Least 3 characters!")
+    .max(50, "Too Long! At Most 50 characters")
+    .label("Name"),
   email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(6).label("Password"),
+  password: Yup.string().required().min(5).label("Password"),
 });
 export default function RegisterScreen() {
+  // const registerApi = useApi(usersApi.register);
+  // const loginApi = usersApi(authApi.login)
+  // const auth = useAuth();
+  // const [error, setError] = useState("hey");
+
+  // const handleSubmit = async (userInfo) => {
+  //   const result = await registerApi.request(userInfo);
+  //   if (!result.ok) {
+  //     if (result.data) setError(result.data.error);
+  //     else {
+  //       setError("An unexpected error occured.");
+  //       console.log(result);
+  //     }
+  //     return;
+  //   }
+  //   const { data: authToken } = await loginApi.request(
+  //     userInfo.email,
+  //     userInfo.password
+  //   );
+  //   auth.logIn(authToken);
+  // };
+  const registerApi = useApi(usersApi.register);
+  //const loginApi = usersApi(authApi.login)
+  const auth = useAuth();
+  const [error, setError] = useState("hey");
+
+  const handleSubmit = async (userInfo) => {
+    const result = await usersApi.register(userInfo)
+    if (!result.ok) {
+      console.log("result is not ok!!!!")
+      console.log(result.data)
+      if (result.data) setError(result.data.error);
+      else {
+        setError("An unexpected error occured.");
+        console.log(result);
+      }
+      return;
+    }
+    const { data: authToken } = await authApi.login(
+      userInfo.email,
+      userInfo.password
+    );
+    auth.logIn(authToken);
+  };
+
   return (
     <AppSafeAreaView style={styles.container}>
+      {/*<AppActivityIndicator visible={registerApi.loading || loginApi.loading} />*/}
       <AppForm
-        initialValues={{ name:"", email: "", password: "" }}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
+        initialValues={{ name: "", email: "", password: "" }}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
+        <AppErrorMessage error={error} visible={error} />
         <AppFormField
           placeholder="Name"
           autoCorrect={false}
@@ -55,7 +112,6 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor:"white"
+    backgroundColor: "white",
   },
-
 });

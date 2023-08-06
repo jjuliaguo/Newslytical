@@ -1,5 +1,11 @@
 //lisings Screen
-import { ActivityIndicator, Button, FlatList, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  Button,
+  FlatList,
+  StyleSheet,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import AppCard from "../components/AppCard";
@@ -10,7 +16,7 @@ import AppText from "../components/AppText";
 import AppActivityIndicator from "../components/AppActivityIndicator";
 import useApi from "../hooks/useApi";
 
-import lisingsApi from "../../api/listings"
+import lisingsApi from "../../api/listings";
 // const listings = [
 //   {
 //     id: 1,
@@ -32,46 +38,47 @@ import lisingsApi from "../../api/listings"
 //   }
 // ];
 export default function MyPostsScreen({ navigation }) {
-
   //const {data: listings,error,loading, request: loadListings}= useApi(allPostsAPI.getListings);
   const getListingsApi = useApi(lisingsApi.getListings);
   useEffect(() => {
-    getListingsApi.request(1,2,3)
+    getListingsApi.request(1, 2, 3);
   }, []);
-
 
   //Get first 15 words from string javascript
   function getWordStr(str) {
     //return str // modify
-    
+
     return str.split(/\s+/).slice(0, 15).join(" ") + "...";
   }
   return (
-    <AppSafeAreaView style={styles.screen}>
-      {getListingsApi.error && (
-        <>
-          <AppText>Couldn't retrieve the result</AppText>
-          <Button title="Retry" onPress={getListingsApi.request}/>
-        </>
-      )}
-      <ActivityIndicator animating={getListingsApi.loading} size="large"/>
-      <FlatList
-        data={getListingsApi.data}
-        keyExtractor={(listing) => listing.id.toString()}
-        renderItem={({ item }) => (
-          <AppCard
-            title={item.title}
-            subtitle={getWordStr(item.article)}
-            imageUrl={item.images[0].url}
-            onPress={() => {
-              navigation.navigate(route.NEWS_DETAILS, item);
-            }}
-            thumbnailUrl ={item.images[0].thumbnailUrl}
-          />
+    <>
+      <ActivityIndicator animating={getListingsApi.loading} size="large" />
+      <AppSafeAreaView style={styles.screen}>
+        {getListingsApi.error && (
+          <>
+            <AppText>Couldn't retrieve the result</AppText>
+            <Button title="Retry" onPress={getListingsApi.request} />
+          </>
         )}
-      />
-      <View style={{height:100}}></View>
-    </AppSafeAreaView>
+
+        <FlatList
+          data={getListingsApi.data}
+          keyExtractor={(listing) => listing.id.toString()}
+          renderItem={({ item }) => (
+            <AppCard
+              title={item.title}
+              subtitle={getWordStr(item.article)}
+              imageUrl={item.images[0].url}
+              onPress={() => {
+                navigation.navigate(route.NEWS_DETAILS, item);
+              }}
+              thumbnailUrl={item.images[0].thumbnailUrl}
+            />
+          )}
+        />
+        <View style={{ height: 100 }}></View>
+      </AppSafeAreaView>
+    </>
   );
 }
 

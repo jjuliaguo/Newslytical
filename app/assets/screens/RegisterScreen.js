@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import React, { useState } from "react";
 import * as Yup from "yup";
@@ -12,7 +12,6 @@ import usersApi from "../../api/user";
 import authApi from "../../api/auth";
 import useAuth from "../../auth/useAuth";
 import useApi from "../hooks/useApi";
-;
 import AppActivityIndicator from "../components/AppActivityIndicator";
 
 const validationSchema = Yup.object().shape({
@@ -25,15 +24,13 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(5).label("Password"),
 });
 export default function RegisterScreen() {
-
   const registerApi = useApi(usersApi.register);
-  const loginApi = useApi(authApi.login)
+  const loginApi = useApi(authApi.login);
   const auth = useAuth();
-  const [error, setError] = useState("hey");
-
+  const [error, setError] = useState();
 
   const handleSubmit = async (userInfo) => {
-    const result = await registerApi.request(userInfo)
+    const result = await registerApi.request(userInfo);
     if (!result.ok) {
       if (result.data) setError(result.data.error);
       else {
@@ -50,41 +47,45 @@ export default function RegisterScreen() {
   };
 
   return (
-    <AppSafeAreaView style={styles.container}>
-      <AppActivityIndicator visible={registerApi.loading || loginApi.loading} />
-      <AppForm
-        initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <AppErrorMessage error={error} visible={error} />
-        <AppFormField
-          placeholder="Name"
-          autoCorrect={false}
-          icon="account"
-          name="name"
-        />
-        <AppFormField
-          placeholder="User Name"
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="email-address"
-          textContentType="emailAddress"
-          icon="email"
-          name="email"
-        />
-        <AppFormField
-          autoCapitalize="none"
-          autoCorrect={false}
-          textContentType="password"
-          secureTextEntry
-          placeholder="Password"
-          icon="key"
-          name="password"
-        />
-        <AppSubmitButton title="Register" />
-      </AppForm>
-    </AppSafeAreaView>
+    <>
+      <AppActivityIndicator
+        visible={registerApi.loading || loginApi.loading}
+      />
+      <AppSafeAreaView style={styles.container}>
+        <AppForm
+          initialValues={{ name: "", email: "", password: "" }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <AppErrorMessage error={error} visible={error} />
+          <AppFormField
+            placeholder="Name"
+            autoCorrect={false}
+            icon="account"
+            name="name"
+          />
+          <AppFormField
+            placeholder="User Name"
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            icon="email"
+            name="email"
+          />
+          <AppFormField
+            autoCapitalize="none"
+            autoCorrect={false}
+            textContentType="password"
+            secureTextEntry
+            placeholder="Password"
+            icon="key"
+            name="password"
+          />
+          <AppSubmitButton title="Register" />
+        </AppForm>
+      </AppSafeAreaView>
+    </>
   );
 }
 

@@ -25,37 +25,16 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(5).label("Password"),
 });
 export default function RegisterScreen() {
-  // const registerApi = useApi(usersApi.register);
-  // const loginApi = usersApi(authApi.login)
-  // const auth = useAuth();
-  // const [error, setError] = useState("hey");
 
-  // const handleSubmit = async (userInfo) => {
-  //   const result = await registerApi.request(userInfo);
-  //   if (!result.ok) {
-  //     if (result.data) setError(result.data.error);
-  //     else {
-  //       setError("An unexpected error occured.");
-  //       console.log(result);
-  //     }
-  //     return;
-  //   }
-  //   const { data: authToken } = await loginApi.request(
-  //     userInfo.email,
-  //     userInfo.password
-  //   );
-  //   auth.logIn(authToken);
-  // };
   const registerApi = useApi(usersApi.register);
-  //const loginApi = usersApi(authApi.login)
+  const loginApi = useApi(authApi.login)
   const auth = useAuth();
   const [error, setError] = useState("hey");
 
+
   const handleSubmit = async (userInfo) => {
-    const result = await usersApi.register(userInfo)
+    const result = await registerApi.request(userInfo)
     if (!result.ok) {
-      console.log("result is not ok!!!!")
-      console.log(result.data)
       if (result.data) setError(result.data.error);
       else {
         setError("An unexpected error occured.");
@@ -63,7 +42,7 @@ export default function RegisterScreen() {
       }
       return;
     }
-    const { data: authToken } = await authApi.login(
+    const { data: authToken } = await loginApi.request(
       userInfo.email,
       userInfo.password
     );
@@ -72,7 +51,7 @@ export default function RegisterScreen() {
 
   return (
     <AppSafeAreaView style={styles.container}>
-      {/*<AppActivityIndicator visible={registerApi.loading || loginApi.loading} />*/}
+      <AppActivityIndicator visible={registerApi.loading || loginApi.loading} />
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
         onSubmit={handleSubmit}

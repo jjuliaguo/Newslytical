@@ -18,7 +18,7 @@ import OfflineNotice from "./app/assets/components/OfflineNotice";
 import AuthNavigator from "./app/assets/components/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
-
+import  {navigationRef} from "./app/assets/components/navigation/rootNavigation"
 
 function Feed() {
   return <NewsDetailScreen />;
@@ -96,7 +96,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={{user, setUser}}>
     <OfflineNotice/>
-    <NavigationContainer theme={navigationTheme}>
+    <NavigationContainer ref={navigationRef} theme={navigationTheme}>
       {user ? <AppNavigator/> : <AuthNavigator />}
     </NavigationContainer>
     </AuthContext.Provider>

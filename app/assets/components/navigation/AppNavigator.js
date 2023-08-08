@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AccountScreen, MyPostsScreen, PublishScreen } from "../../screens";
@@ -7,13 +7,16 @@ import AccountNavigator from "./AccountNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PublishTabButton from "./PublishTabButton";
 import route from "./route";
+import useNotifications from "../../hooks/useNotifications";
+
+
 const Tab = createBottomTabNavigator();
 
-export default function AppNavigator() {
+const AppNavigator = () => {
+  useNotifications();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-       
         tabBarStyle: {
           height: 90,
           paddingHorizontal: 5,
@@ -59,4 +62,6 @@ export default function AppNavigator() {
       />
     </Tab.Navigator>
   );
-}
+};
+
+export default AppNavigator;

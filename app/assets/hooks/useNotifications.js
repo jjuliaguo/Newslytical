@@ -8,12 +8,9 @@ export default useNotifications=(notificationListener)=>{
     useEffect(()=>{
         registerForPushNotification();
         if (notificationListener)
-          Notifications.addPushTokenListener(notification => {
-          navigation.navigate('Account');
-          
-        });
-    
-      },[]);
+          Notifications.addPushTokenListener(notificationListener)
+        },[]);
+
       const registerForPushNotification = async () => {
         try {
           const permission = Permissions.askAsync(Permissions.NOTIFICATIONS);

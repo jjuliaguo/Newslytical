@@ -10,21 +10,21 @@ import useAuth from "../../auth/useAuth";
 
 
 const menuItems = [
-  {
-    title: "My Posts",
-    icon: {
-      name: "typewriter",
-      backgroundColor: "#FF7F50",
-    },
-  },
-  {
-    title: "My Message",
-    icon: {
-      name: "email",
-      backgroundColor: colors.primaryGreen,
-    },
-    targetScreen:"Message"
-  },
+  // {
+  //   title: "My Posts",
+  //   icon: {
+  //     name: "typewriter",
+  //     backgroundColor: "#FF7F50",
+  //   },
+  // },
+  // {
+  //   title: "My Message",
+  //   icon: {
+  //     name: "email",
+  //     backgroundColor: colors.primaryGreen,
+  //   },
+  //   targetScreen:"Message"
+  // },
 ];
 
 export default function AccountScreen({navigation}) {

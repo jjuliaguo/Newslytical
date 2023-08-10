@@ -9,7 +9,7 @@ export default function NewsDetailScreen({route}) {
   return (
     <ScrollView style={styles.card}>
       <Image style={styles.image} uri={post.images[0].url} tint="light" preview={{uri:post.images[0].thumbnailUrl}}/>
-      <AppListItem title="Josephen Roger" subTitle="Jan 08, 2022" />
+      <AppListItem title="" subTitle="" />
       <AppText style={styles.title}>
         {post.title}
       </AppText>

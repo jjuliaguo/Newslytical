@@ -36,7 +36,7 @@ export default function AccountScreen({navigation}) {
         <AppListItem
           title={user.name}
           subTitle={user.email}
-          image={require("../profile.jpeg")}
+          image={require("../profile.png")}
         />
       </View>
       <View style={styles.containers}>

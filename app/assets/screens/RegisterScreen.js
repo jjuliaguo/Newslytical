@@ -43,6 +43,7 @@ export default function RegisterScreen() {
       userInfo.email,
       userInfo.password
     );
+    console.log("here")
     auth.logIn(authToken);
   };
 

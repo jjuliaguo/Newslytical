@@ -9,7 +9,7 @@ import React from "react";
 import AppText from "../AppText";
 import colors from "../../config/colors";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 //AppListItem is for author and icon, it has title and subtitle
 
@@ -22,7 +22,7 @@ export default function AppListItem({
   renderRightActions,
 }) {
   return (
-    <GestureHandlerRootView>
+   
       <Swipeable renderRightActions={renderRightActions}>
         <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
           <View style={styles.container}>
@@ -46,7 +46,7 @@ export default function AppListItem({
           </View>
         </TouchableHighlight>
       </Swipeable>
-    </GestureHandlerRootView>
+   
   );
 }
 

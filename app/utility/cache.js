@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import moment from "moment";
 import dayjs from 'dayjs'
+import logger from './logger';
 
 
 const prefix = "cache";
@@ -15,7 +16,7 @@ const store = async (key, value) => {
     };
     await AsyncStorage.setItem(prefix + key, JSON.stringify(item));
   } catch (error) {
-    console.log(error);
+    logger.log(error);
   }
 };
 
@@ -40,7 +41,7 @@ const get = async (key) => {
 
     return item.value;
   } catch (error) {
-    console.log(error);
+   logger.log(error);
   }
 };
 

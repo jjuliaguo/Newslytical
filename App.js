@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,6 +21,8 @@ import AuthNavigator from "./app/assets/components/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import  {navigationRef} from "./app/assets/components/navigation/rootNavigation"
+import logger from "./app/utility/logger";
+logger.start()
 
 function Feed() {
   return <NewsDetailScreen />;
@@ -81,7 +85,7 @@ function MyTabs() {
 }
 
 export default function App() {
-
+  
   const[user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
   const restoreUser = async() => {

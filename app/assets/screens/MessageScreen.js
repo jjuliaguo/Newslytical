@@ -16,7 +16,7 @@ const initialMessages = [
     title: "John Doe",
     description:
       "Hey Julia, did you finished your Math Assighnment?? I hace asome question !",
-    image: require("../profile.jpeg"),
+    image: require("../profile.png"),
   },
   {
     id: 3,

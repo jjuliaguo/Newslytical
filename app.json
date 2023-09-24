@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "Newslytical",
+
     "slug": "Newslytical",
+    "privacy": "public",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "light",
-    
-  
     "splash": {
       "image": "./app/assets/splash.png",
       "resizeMode": "cover",
@@ -21,9 +21,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier":"com.juliaguo.newslytical"
+      "bundleIdentifier": "com.juliaguo.newslytical"
     },
     "android": {
+      "package": "com.juliaguo.newslytical",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -31,6 +33,15 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "extra": {
+      "bugsnag": {
+        "apiKey": "b70c661275b47c442e38f160faa02517"
+      },
+      "eas": {
+        "projectId": "78474f6c-8f0a-48c5-9ebc-e98e3543d2b8"
+      }
+    },
+    "plugins": []
   }
 }

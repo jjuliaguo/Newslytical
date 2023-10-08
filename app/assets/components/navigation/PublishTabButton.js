@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import colors from "../../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function PublishTabButton({onPress}) {
   return (
@@ -21,13 +20,14 @@ export default function PublishTabButton({onPress}) {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: colors.primaryD1,
+    backgroundColor:colors.primaryD1,
     borderColor: 'rgba(34,36,40,1)',
     borderWidth: 10,
     height: 80,
     width: 80,
     borderRadius: 40,
     bottom: 20,
+    zIndex:999,
     justifyContent: "center",
   },
 });

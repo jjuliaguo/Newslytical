@@ -24,6 +24,7 @@ const AppNavigator = () => {
           backgroundColor: "rgba(34,36,40,1)",
           position: "absolute",
           borderTopWidth: 0,
+          
         },
       })}
     >
@@ -43,7 +44,8 @@ const AppNavigator = () => {
         options={({ navigation }) => ({
           tabBarButton: () => (
             <PublishTabButton
-              onPress={() => navigation.navigate(route.PUBLISH)}
+              //onPress={() => navigation.navigate(route.PUBLISH)}
+              onPress={()=>console.log("hello")}
             />
           ),
           headerShown: false,

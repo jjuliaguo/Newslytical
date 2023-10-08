@@ -21,7 +21,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.juliaguo.newslytical"
+      "bundleIdentifier": "com.juliaguo.newslytical",
+      "buildNumber":"1.0,0"
     },
     "android": {
       "package": "com.juliaguo.newslytical",

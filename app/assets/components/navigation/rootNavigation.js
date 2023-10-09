@@ -5,4 +5,4 @@ const navigate = (name, params) =>
 
 export default{
     navigate,
-}
+};

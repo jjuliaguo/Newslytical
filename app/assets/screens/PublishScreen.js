@@ -1,6 +1,6 @@
 import { Alert, StyleSheet } from "react-native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import * as Yup from "yup";
 import {
   AppForm,
@@ -84,13 +84,14 @@ export default function PublishScreen() {
     setProgress(0);
     setUploadScreenVisible(true);
     //listing.publishedDate = new Date().toISOString();
-    const result = await listingsApi.addListings({ ...listing }, (progress) => {
+    const result = await listingsApi.addListings(
+      { ...listing }, (progress) => {
       console.log("Progress:", progress);
       setProgress(progress);
     });
 
     if (!result.ok) {
-      //console.log(result)
+      console.log(result)
       setUploadScreenVisible(false);
       return alert("Oops! Something went wrong, Please try again later");
     } else {

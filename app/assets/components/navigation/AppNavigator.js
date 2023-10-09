@@ -44,8 +44,8 @@ const AppNavigator = () => {
         options={({ navigation }) => ({
           tabBarButton: () => (
             <PublishTabButton
-              //onPress={() => navigation.navigate(route.PUBLISH)}
-              onPress={()=>console.log("hello")}
+              onPress={() => navigation.navigate(route.PUBLISH)}
+              
             />
           ),
           headerShown: false,
